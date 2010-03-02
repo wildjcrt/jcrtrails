@@ -1,4 +1,8 @@
 class ForumController < ApplicationController
+  before_filter :login_required, :only => [:new, :edit, :create, :destroy]
+                                #:except => [:index, :show]
+  before_filter :find_post, :only =>  [:edit, :update, :destroy]
+                            
   def index
     @posts = Post.find(:all)
   end
@@ -12,12 +16,10 @@ class ForumController < ApplicationController
   end
   
   def edit
-    @post = Post.find(params[:id])
   end
   
   def create
-    @post = Post.new(params[:post])
-    @post = Post.create(params[:post])
+    @post = current_user.posts.build(params[:post])
     if @post.save
       flash[:notice] = 'Post was successfully created.'
       redirect_to forum_path(@post)
@@ -27,7 +29,6 @@ class ForumController < ApplicationController
   end
   
   def update
-    @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
       flash[:notice] = 'Post was successfully updated.'
       redirect_to forum_path(@post)
@@ -37,8 +38,12 @@ class ForumController < ApplicationController
   end
   
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to forums_path
+  end
+  
+  protected
+  def find_post
+    @post = current_user.posts.find(params[:id])    
   end
 end
