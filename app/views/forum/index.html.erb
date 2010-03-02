@@ -8,7 +8,7 @@
 	</tr>
 
 <% for post in @posts %>
-	<tr>
+	<tr><td><%=post.id%>.</td>
 		<td><%= post.subject %></td>
 		<td><%= link_to 'Show', forum_path(post) %></td>
 		<% if current_user %>
@@ -19,3 +19,5 @@
 	</tr>
 <% end %>
 </table>
+
+<%= will_paginate(@posts) %>

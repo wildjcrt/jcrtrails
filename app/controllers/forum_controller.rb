@@ -4,7 +4,8 @@ class ForumController < ApplicationController
   before_filter :find_post, :only =>  [:edit, :update, :destroy]
                             
   def index
-    @posts = Post.find(:all)
+#    @posts = Post.recent.hot.paginate( :page => params[:page], :per_page => 5)
+    @posts = Post.recent.paginate( :page => params[:page], :per_page => 5)
   end
   
   def show
