@@ -17,6 +17,7 @@ class ForumController < ApplicationController
   
   def create
     @post = Post.new(params[:post])
+    @post = Post.create(params[:post])
     if @post.save
       flash[:notice] = 'Post was successfully created.'
       redirect_to forum_path(@post)

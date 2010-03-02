@@ -5,5 +5,10 @@
     <div><%= f.text_area :content %></div>
     <%= f.submit "Submit", :disable_with => 'Submitting...' %>
 <% end -%>
+
+<% form_for :post, @post, :url => forum_path, :html => { :multipart => true } do |form| %>
+  <%= form.file_field :attachment %>
+<% end %>
+
  
 <%= link_to 'Show', forum_path(@post) %> | <%= link_to 'Back', forums_path %>

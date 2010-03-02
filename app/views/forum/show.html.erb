@@ -1,5 +1,10 @@
 <h1><%= @post.subject %></h1>
 <div>
     <%= @post.content %>
+  	<%= image_tag @post.attachment.url %>
+  	<%= image_tag @post.attachment.url(:medium) %>
+  	<%= image_tag @post.attachment.url(:thumb) %>
+
 </div>
+
 <%= link_to 'Edit', edit_forum_path(@post) %> | <%= link_to 'Back', forums_path %>
