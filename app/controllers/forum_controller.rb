@@ -1,5 +1,5 @@
 class ForumController < ApplicationController
-  before_filter :login_required, :only => [:new, :edit, :create, :destroy]
+  before_filter :login_required, :only => [:new, :edit, :create, :update, :destroy]
                                 #:except => [:index, :show]
   before_filter :find_post, :only =>  [:edit, :update, :destroy]
                             
