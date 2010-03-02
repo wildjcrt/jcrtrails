@@ -8,3 +8,19 @@
 </div>
 
 <%= link_to 'Edit', edit_forum_path(@post) %> | <%= link_to 'Back', forums_path %>
+<hr>
+<% form_for :comment, :url => forum_comments_path(@post) , :html => { :multipart => true }do |f| -%>
+	<%= f.error_messages %>
+
+	<div><label>content</label><%= f.text_area :content %></div>
+
+	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
+<% end -%>
+<table>
+	
+	<%= render :partial => "comment_item", :collection => @comments, :as => :c %>
+	<!--	<% for comment in @comments %>
+		<tr><td><%= comment.content %></td></tr>
+		<%end%>
+	 !-->
+</table>

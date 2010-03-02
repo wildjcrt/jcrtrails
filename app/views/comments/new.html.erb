@@ -1,0 +1,7 @@
+<% form_for :comment, :url => forum_comments_path(@post) , :html => { :multipart => true }do |f| -%>
+	<%= f.error_messages %>
+
+	<div><label>content</label><%= f.text_area :content %></div>
+
+	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
+<% end -%>
