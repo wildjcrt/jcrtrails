@@ -1,0 +1,9 @@
+<h1>Edit Post</h1>
+<% form_for :post , :url => forum_path(@post) , :html => {:method => :put} do |f| -%>
+    <%= f.error_messages %>
+    <div><%= f.text_field :subject %></div>
+    <div><%= f.text_area :content %></div>
+    <%= f.submit "Submit", :disable_with => 'Submitting...' %>
+<% end -%>
+ 
+<%= link_to 'Show', forum_path(@post) %> | <%= link_to 'Back', forums_path %>
