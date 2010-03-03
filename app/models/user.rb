@@ -1,3 +1,20 @@
+# == Schema Information
+# Schema version: 20100303055944
+#
+# Table name: users
+#
+#  id                        :integer(4)      not null, primary key
+#  login                     :string(40)
+#  name                      :string(100)     default("")
+#  email                     :string(100)
+#  crypted_password          :string(40)
+#  salt                      :string(40)
+#  created_at                :datetime
+#  updated_at                :datetime
+#  remember_token            :string(40)
+#  remember_token_expires_at :datetime
+#
+
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
@@ -26,6 +43,7 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :name, :password, :password_confirmation
   has_many :posts
   has_many :users
+  has_many :albums
 
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.

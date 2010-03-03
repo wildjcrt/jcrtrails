@@ -4,21 +4,21 @@
   	<%= image_tag @post.attachment.url %>
   	<%= image_tag @post.attachment.url(:medium) %>
   	<%= image_tag @post.attachment.url(:thumb) %>
-
 </div>
 
 <%= link_to 'Edit', edit_forum_path(@post) %> | <%= link_to 'Back', forums_path %>
 <hr>
-<% form_for :comment, :url => forum_comments_path(@post) , :html => { :multipart => true }do |f| %>
+<% form_for :comment, :url => forum_comments_path(@post) , 
+					  :html => { :multipart => true } do |f| %>
 	<%= f.error_messages %>
 	<div><label>content</label><%= f.text_area :content %></div>
 	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
 <% end %>
-<%= @comments.size %>
-<table>
-	
+<%# @comments.size %>
+<table>	
 	<%= render :partial => "comment_item", :collection => @comments, :as => :c %>
-	<!--	<% for comment in @comments %>
+	<!--	
+		s<% for comment in @comments %>
 		<tr><td><%= comment.content %></td></tr>
 		<% end %>
 	 !-->

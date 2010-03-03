@@ -1,4 +1,4 @@
-<h1>Jcrt Forum</h1>
+<h1>Forum</h1>
 <%= render :partial => "user_status_bar" %>
 <% if current_user %>
 <h2><%= link_to 'New Post', new_forum_path %></h2>
@@ -8,7 +8,7 @@
 	</tr>
 
 <% for post in @posts %>
-	<tr><td><%=post.id%>.</td>
+	<tr><td><%= post.id %>.</td>
 		<td><%= post.subject %></td>
 		<td><%= link_to 'Show', forum_path(post) %></td>
 		<% if current_user %>

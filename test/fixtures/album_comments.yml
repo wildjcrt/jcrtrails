@@ -1,15 +1,11 @@
 # == Schema Information
 # Schema version: 20100303055944
 #
-# Table name: comments
+# Table name: album_comments
 #
 #  id         :integer(4)      not null, primary key
-#  content    :text
-#  post_id    :integer(4)
-#  user_id    :integer(4)
 #  created_at :datetime
 #  updated_at :datetime
-#  album_id   :integer(4)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

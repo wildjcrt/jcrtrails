@@ -21,6 +21,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :forums, :controller => "forum" do |forum|
     forum.resources :comments, :controller => "comments"
   end
+  map.resources :albums, :controller => "albums" do |album|
+    album.resources :comments, :controller => "album_comments"
+  end    
 
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
