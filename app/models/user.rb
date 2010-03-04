@@ -46,7 +46,8 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :users
   has_many :albums
-
+  has_many :favorites
+  has_many :games, :through => :favorites, :source => :game
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

@@ -29,6 +29,10 @@ ActionController::Routing::Routes.draw do |map|
     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
     admin.resources :forums
   end
+  
+  map.resources :games do |game|
+    game.resources :forums
+  end  
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
 
