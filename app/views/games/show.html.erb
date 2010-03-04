@@ -1,0 +1,8 @@
+<h1><%= @game.name %></h1>
+<div>
+    <%= @game.intro %>
+	<%= @game.designer %>
+	<%= @game.publisher %>
+</div>
+
+<%= link_to("Edit", edit_game_path(@game)) %> | <%= link_to("Back", games_path) %>

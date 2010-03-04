@@ -1,0 +1,17 @@
+<h1>Game List</h1>
+<h2><%= link_to("New Game", new_game_path) %></h2>
+<table>
+	<tr>
+	</tr>
+
+<% for game in @games %>
+	<tr><td><%= game.name %></td>
+		<td><%= link_to("Show", game_path(game)) %></td>
+		<td><%= link_to("Edit", edit_game_path(game)) %></td>
+		<td><%= link_to 'Destroy', game_path(game), 
+			:confirm => 'Are you sure?', :method => :delete %></td>
+		</tr>
+<% end %>
+</table>
+
+<%= will_paginate(@games) %>

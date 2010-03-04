@@ -1,0 +1,12 @@
+<h1>New Game</h1>
+
+<% form_for :game, :url => games_path do |f| %>
+	<%= f.error_messages %>
+	<div><label>Name</label><br><%= f.text_field :name %></div>
+	<div><label>Introduction</label><br><%= f.text_area :intro %></div>
+	<div><label>Designer</label><br><%= f.text_field :designer %></div>
+	<div><label>Publisher</label><br><%= f.text_field :publisher %></div>
+	<%= f.submit "Submit" %>
+<% end %>
+
+<%= link_to("Back", games_path) %>
