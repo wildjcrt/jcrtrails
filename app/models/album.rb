@@ -10,8 +10,8 @@
 #  attachment_content_type :string(255)
 #  attachment_file_size    :integer(4)
 #  attachment_updated_at   :datetime
-#  comments_count          :integer(4)      default(0)
 #  user_id                 :integer(4)
+#  album_comments_count    :integer(4)      default(0)
 #  created_at              :datetime
 #  updated_at              :datetime
 #

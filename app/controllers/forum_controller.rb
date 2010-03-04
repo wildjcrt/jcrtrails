@@ -1,7 +1,7 @@
 class ForumController < ApplicationController
-  before_filter :login_required, :only => [:new, :edit, :create, :update, :destroy]
+  before_filter :login_required, :only => [:new, :edit, :create, :update]
                                 #:except => [:index, :show]
-  before_filter :find_post, :only =>  [:edit, :update, :destroy]
+  before_filter :find_post, :only =>  [:edit, :update]
                             
   def index
 #    @posts = Post.recent.hot.paginate( :page => params[:page], :per_page => 5)
@@ -37,11 +37,6 @@ class ForumController < ApplicationController
     else
       format.html {render :action => "edit"}
     end
-  end
-  
-  def destroy
-    @post.destroy
-    redirect_to forums_path
   end
   
   protected

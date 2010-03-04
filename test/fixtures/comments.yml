@@ -9,7 +9,6 @@
 #  user_id    :integer(4)
 #  created_at :datetime
 #  updated_at :datetime
-#  album_id   :integer(4)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

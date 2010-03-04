@@ -13,6 +13,7 @@
 #  updated_at                :datetime
 #  remember_token            :string(40)
 #  remember_token_expires_at :datetime
+#  is_admin                  :boolean(1)
 #
 
 require 'digest/sha1'
@@ -41,6 +42,7 @@ class User < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation
+  # attr_protected :is_admin
   has_many :posts
   has_many :users
   has_many :albums

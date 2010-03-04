@@ -3,11 +3,7 @@
 <% if current_user %>
 <h2><%= link_to 'New Post', new_forum_path %></h2>
 <% end %>
-
-<!--
-<div class="abc">fghjkhgf</div>
--->
-
+<div class="abc">srth</div>
 <table>
 	<tr>
 	</tr>
@@ -16,8 +12,9 @@
 	<tr><td><%= post.id %>.</td>
 		<td><%= post.subject %></td>
 		<td><%= link_to 'Show', forum_path(post) %></td>
-		<% if current_user %>
-		<td><%= link_to 'Edit', edit_forum_path(post) %></td>
+		<% if current_user.is_admin %>
+		<td><%= link_to 'Destroy', forum_path(post), 
+			:confirm => 'Are you sure?', :method => :delete %></td>
 		<% end %>
 	</tr>
 <% end %>

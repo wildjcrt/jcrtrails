@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20100303055944) do
     t.datetime "updated_at"
     t.string   "remember_token",            :limit => 40
     t.datetime "remember_token_expires_at"
+    t.boolean  "is_admin",                                 :default => false
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

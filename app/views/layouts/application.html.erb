@@ -3,11 +3,21 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Jcrt Forum</title>
+	<title>Jcrt Rails</title>
+	<%= stylesheet_link_tag("reset.css", "base.css", "font.css", "960.css", "application.css") %>
 	<meta name="author" content="Jcrt">
 </head>
+
 <body>
+<div class="container_12">	
 	<p style="color: green"><%= flash[:notice] %></p>
-	<%= yield %>
+	<!--
+	<div id="header">header</div>
+	-->
+	<%= render :partial => "common/user_status_bar" %>		
+	<div class="grid_9" id="main"><%= yield %></div>
+	<div class="grid_3" id="sidebar"><%= yield(:sidebar) %></div>	
+	<div id="footer"><%= yield(:footer) %></div>
+</div>
 </body>
 </html>

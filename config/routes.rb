@@ -19,12 +19,16 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   map.resources :forums, :controller => "forum" do |forum|
-    forum.resources :comments, :controller => "comments"
+    forum.resources :comments
   end
-  map.resources :albums, :controller => "albums" do |album|
+  
+  map.resources :albums do |album|
     album.resources :comments, :controller => "album_comments"
   end    
-
+  map.namespace :admin do |admin|
+    # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
+    admin.resources :forums
+  end
   # Sample resource route with options:
   #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
 

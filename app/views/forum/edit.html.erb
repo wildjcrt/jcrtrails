@@ -4,7 +4,7 @@
     <%= f.error_messages %>
     <div><%= f.text_field :subject %></div>
     <div><%= f.text_area :content %></div>
-	<%= f.file_field :attachment %>
+	<%= f.file_field :attachment %><br>
     <%= f.submit "Submit", :disable_with => 'Submitting...' %>
 <% end -%>
 

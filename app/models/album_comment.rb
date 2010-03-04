@@ -4,6 +4,9 @@
 # Table name: album_comments
 #
 #  id         :integer(4)      not null, primary key
+#  content    :text
+#  user_id    :integer(4)
+#  album_id   :integer(4)
 #  created_at :datetime
 #  updated_at :datetime
 #
