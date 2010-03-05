@@ -7,14 +7,3 @@
 </div>
 
 <%= link_to("Edit", edit_album_path(@album)) %> | <%= link_to("Back", albums_path) %>
-<hr>
-<% form_for :comment, :url => album_comments_path(@album) , 
-					  :html => { :multipart => true } do |f| %>
-	<%= f.error_messages %>
-	<div><label>content</label><%= f.text_area :content %></div>
-	<%= f.submit "Submit" %>
-<% end %>
-<%= @comments.size %>
-<table>	
-	<%= render :partial => "comment_item", :collection => @comments, :as => :c %>
-</table>

@@ -1,0 +1,12 @@
+<h1>New Photo</h1>
+
+<% form_for :photo, :url => photos_path , :html => { :multipart => true } do |f| %>
+	<%= f.error_messages %>
+	<label>Upload Your Picture</label><br>
+	<%= f.file_field :attachment %>	
+	<div><label>subject</label><br><%= f.text_field :subject %></div>
+	<div><label>content</label><br><%= f.text_area :content %></div>
+	<%= f.submit "Submit" %>
+<% end %>
+
+<%= link_to("Back", photos_path) %>

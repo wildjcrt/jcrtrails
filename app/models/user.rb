@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :users
   has_many :albums
+  has_many :photos
   
   has_many :favorites
   has_many :favorite_games, :through => :favorites, :source => :game

@@ -1,0 +1,17 @@
+<h1>Photo</h1>
+<% if current_user %>
+<h2><%= link_to("New Photo", new_photo_path) %></h2>
+<% end %>
+	<%= render_table(@photos,
+		[
+	    ["ID", lambda { |p| p.id }],
+	    ["照片名稱", lambda { |p| p.subject }],
+		["動作", lambda { |p|
+		  link_to("Show", photo_path(p)) + ' | ' +
+		  link_to("Edit", edit_photo_path(p)) + ' | ' +
+		  link_to("Delete", photo_path(p), :confirm => "Are you sure?", :method => :delete )}]
+		],
+	    :class_name => "table") 
+	%>
+	
+<%= will_paginate(@photos) %>

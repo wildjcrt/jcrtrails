@@ -21,15 +21,18 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :forums, :controller => "forum" do |forum|
     forum.resources :comments
   end
-  
-  map.resources :albums do |album|
-    album.resources :comments, :controller => "album_comments"
-  end    
   map.namespace :admin do |admin|
     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
     admin.resources :forums
   end
-  
+    
+  map.resources :albums do |album|
+    album.resources :photos, :controller => "photos"
+  end
+  map.resources :photos do |photo|
+    photo.resources :comments, :controller => "photo_comments"
+  end    
+
   map.resources :games, :member => {:add_favorites => :get, :remove_favorites => :get} do |game|
     game.resources :forums
   end  

@@ -9,15 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100304080807) do
-
-  create_table "album_comments", :force => true do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "album_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20100305024843) do
 
   create_table "albums", :force => true do |t|
     t.string   "subject"
@@ -27,7 +19,6 @@ ActiveRecord::Schema.define(:version => 20100304080807) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.integer  "user_id"
-    t.integer  "album_comments_count",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +45,28 @@ ActiveRecord::Schema.define(:version => 20100304080807) do
     t.string   "publisher"
     t.integer  "forum_id"
     t.integer  "album_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photo_comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "photo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.string   "subject"
+    t.string   "content"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer  "user_id"
+    t.integer  "album_id"
+    t.integer  "photo_comments_count",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

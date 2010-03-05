@@ -4,12 +4,12 @@ class AlbumsController < ApplicationController
 
     def index
       @albums = Album.recent.paginate( :page => params[:page], :per_page => 5)
+
     end
 
     def show
       @album = Album.find(params[:id])
-      @comments = @album.comments
-    end
+   end
 
     def new
       @album = Album.new

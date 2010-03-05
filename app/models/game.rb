@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20100304063718
+# Schema version: 20100305024843
 #
 # Table name: games
 #
 #  id         :integer(4)      not null, primary key
 #  name       :string(255)
-#  intro      :string(255)
+#  intro      :text
 #  designer   :string(255)
 #  publisher  :string(255)
 #  forum_id   :integer(4)
