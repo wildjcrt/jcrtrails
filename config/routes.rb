@@ -30,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :forums
   end
   
-  map.resources :games do |game|
+  map.resources :games, :member => {:add_favorites => :get, :remove_favorites => :get} do |game|
     game.resources :forums
   end  
   # Sample resource route with options:

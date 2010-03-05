@@ -14,11 +14,9 @@
 #  updated_at :datetime
 #
 
-class Game < ActiveRecord::Base
-  
+class Game < ActiveRecord::Base  
   has_many  :favorites
   has_many  :users, :through => :favorites
-  
   has_one   :album
   named_scope :recent  
 end

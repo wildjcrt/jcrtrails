@@ -23,7 +23,7 @@ class ForumController < ApplicationController
   def create
     @post = current_user.posts.build(params[:post])
     if @post.save
-      flash[:notice] = 'Post was successfully created.'
+      notice_stickie('Post was successfully created.')
       redirect_to forum_path(@post)
     else
       render :action => "new"
@@ -32,7 +32,7 @@ class ForumController < ApplicationController
   
   def update
     if @post.update_attributes(params[:post])
-      flash[:notice] = 'Post was successfully updated.'
+      notice_stickie('Post was successfully updated.')
       redirect_to forum_path(@post)
     else
       format.html {render :action => "edit"}

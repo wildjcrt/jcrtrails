@@ -13,6 +13,7 @@ class Admin::ForumsController < ApplicationController
 
   def destroy
     @post.destroy
+    warning_stickie('Post was successfully remove.')
     redirect_to forums_path
   end
   

@@ -18,8 +18,7 @@
 
 class Album < ActiveRecord::Base
   has_attached_file :attachment, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  belongs_to  :user
-  has_many    :comments, :class_name => "AlbumComment"
-  has_many    :games
+  belongs_to :user
+  has_many :comments, :class_name => "AlbumComment"
   named_scope :recent
 end

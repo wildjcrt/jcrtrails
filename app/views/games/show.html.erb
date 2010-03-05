@@ -1,8 +1,11 @@
 <h1><%= @game.name %></h1>
-<div>
-    <%= @game.intro %>
-	<%= @game.designer %>
-	<%= @game.publisher %>
-</div>
 
+<%= render_list(
+	[
+    "簡介"+'<br>'+@game.intro,
+    "設計師"+'<br>'+@game.designer,
+	"出版社"+'<br>'+@game.publisher
+	]
+	) 
+%>
 <%= link_to("Edit", edit_game_path(@game)) %> | <%= link_to("Back", games_path) %>

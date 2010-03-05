@@ -9,7 +9,7 @@ class AlbumCommentsController < ApplicationController
     @comment = @album.comments.build(params[:comment])
     @comment.user_id = current_user.id
     if @comment.save
-      flash[:notice] = 'Album was successfully created.'
+      notice_stickie('Album was successfully created.')
       redirect_to album_path(@album)
     else
       render :action => "new"

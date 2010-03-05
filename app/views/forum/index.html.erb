@@ -7,20 +7,19 @@
 <!--
 <div class="abc">fghjkhgf</div>
 -->
-
-<table>
-	<tr>
-	</tr>
-
-<% for post in @posts %>
-	<tr><td><%= post.id %>.</td>
-		<td><%= post.subject %></td>
-		<td><%= link_to 'Show', forum_path(post) %></td>
-		<% if current_user %>
-		<td><%= link_to 'Edit', edit_forum_path(post) %></td>
-		<% end %>
-	</tr>
-<% end %>
-</table>
+	<%= render_table(@posts,
+		[
+	    ["ID", lambda { |p| p.id }],
+	    ["相簿名稱", lambda { |p| p.subject }],
+		["動作", lambda { |p|
+		if current_user
+		  link_to("Show", forum_path(p)) + ' | ' +
+		  link_to("Edit", edit_forum_path(p)) + ' | ' +
+		  link_to("Delete", forum_path(p), :confirm => "Are you sure?", :method => :delete)
+		end
+		}]
+		],
+	    :class_name => "table") 
+	%>
 
 <%= will_paginate(@posts) %>

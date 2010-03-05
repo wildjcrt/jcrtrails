@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20100304080807) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
-    t.string   "intro"
+    t.text     "intro"
     t.string   "designer"
     t.string   "publisher"
     t.integer  "forum_id"

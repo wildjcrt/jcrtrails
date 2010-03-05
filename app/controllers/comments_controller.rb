@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(params[:comment])
     @comment.user_id = current_user.id
     if @comment.save
-      flash[:notice] = 'Post was successfully created.'
+      notice_stickie('Post was successfully created.')
       redirect_to forum_path(@post)
     else
       render :action => "new"

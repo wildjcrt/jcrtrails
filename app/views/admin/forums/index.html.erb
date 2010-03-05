@@ -4,20 +4,17 @@
 <h2><%= link_to 'New Post', new_forum_path %></h2>
 <% end %>
 <div class="abc">srth</div>
-<table>
-	<tr>
-	</tr>
 
-<% for post in @posts %>
-	<tr><td><%= post.id %>.</td>
-		<td><%= post.subject %></td>
-		<td><%= link_to 'Show', forum_path(post) %></td>
-		<% if current_user.is_admin %>
-		<td><%= link_to 'Destroy', forum_path(post), 
-			:confirm => 'Are you sure?', :method => :delete %></td>
-		<% end %>
-	</tr>
-<% end %>
-</table>
+	<%= render_table(@posts,
+		[
+	    ["ID", lambda { |p| p.id }],
+	    ["文章名稱", lambda { |p| p.subject }],
+		["動作", lambda { |p|
+		  link_to("Show", forum_path(p)) + ' | ' +
+		  link_to("Edit", edit_forum_path(p)) + ' | ' +
+		  link_to("Delete", forum_path(p), :confirm => "Are you sure?", :method => :delete )}]
+		],
+	    :class_name => "table") 
+	%>
 
 <%= will_paginate(@posts) %>

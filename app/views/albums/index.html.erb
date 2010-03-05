@@ -2,20 +2,16 @@
 <% if current_user %>
 <h2><%= link_to("New Album", new_album_path) %></h2>
 <% end %>
-<table>
-	<tr>
-	</tr>
-
-<% for album in @albums %>
-	<tr><td><%= album.subject %></td>
-		<td><%= link_to("Show", album_path(album)) %></td>
-		<% if current_user %>
-		<td><%= link_to("Edit", edit_album_path(album)) %></td>
-		<td><%= link_to 'Destroy', album_path(album), 
-			:confirm => 'Are you sure?', :method => :delete %></td>
-		<% end %>
-	</tr>
-<% end %>
-</table>
-
+	<%= render_table(@albums,
+		[
+	    ["ID", lambda { |p| p.id }],
+	    ["相簿名稱", lambda { |p| p.subject }],
+		["動作", lambda { |p|
+		  link_to("Show", album_path(p)) + ' | ' +
+		  link_to("Edit", edit_album_path(p)) + ' | ' +
+		  link_to("Delete", album_path(p), :confirm => "Are you sure?", :method => :delete )}]
+		],
+	    :class_name => "table") 
+	%>
+	
 <%= will_paginate(@albums) %>
