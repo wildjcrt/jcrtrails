@@ -3,7 +3,7 @@ class AlbumsController < ApplicationController
     before_filter :find_album, :only =>  [:edit, :update, :destroy]
 
     def index
-      @albums = Album.recent.paginate( :page => params[:page], :per_page => 5)
+      @albums = Album.recent.paginate( :page => params[:page], :per_page => 10)
 
     end
 

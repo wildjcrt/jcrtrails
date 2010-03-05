@@ -1,11 +1,13 @@
 <h1>Photo</h1>
 <% if current_user %>
 <h2><%= link_to("New Photo", new_photo_path) %></h2>
+<%= link_to("Back", albums_path) %>
 <% end %>
 	<%= render_table(@photos,
 		[
 	    ["ID", lambda { |p| p.id }],
-	    ["照片名稱", lambda { |p| p.subject }],
+	    ["標題", lambda { |p| p.subject }],
+		["相片", lambda { |p| render_list_show_photo(p) }],
 		["動作", lambda { |p|
 		  link_to("Show", photo_path(p)) + ' | ' +
 		  link_to("Edit", edit_photo_path(p)) + ' | ' +

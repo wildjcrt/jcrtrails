@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   before_filter :find_photo, :only =>  [:edit, :update, :destroy]
 
   def index
-    @photos = Photo.recent.paginate( :page => params[:page], :per_page => 5)
+    @photos = Photo.recent.paginate( :page => params[:page], :per_page => 10)
   end
 
   def show

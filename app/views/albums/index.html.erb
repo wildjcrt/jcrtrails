@@ -6,7 +6,7 @@
 		[
 	    ["ID", lambda { |p| p.id }],
 	    ["相簿名稱", lambda { |p| p.subject }],
-		#["相簿封面", lambda { |p| p.attachment.url(:thumb) }],
+		["相簿封面", lambda { |p| render_list_show_cover(p) }],
 		["動作", lambda { |p|
 		  link_to("Show Cover", album_path(p)) + ' | ' +
 		  link_to("Show Photos", album_photos_path(p)) + ' | ' +
