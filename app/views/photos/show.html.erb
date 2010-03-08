@@ -6,7 +6,8 @@
     <%= @photo.content %>
 </div>
 
-<%= link_to("Edit", edit_photo_path(@photo)) %> | <%= link_to("Back", photos_path) %>
+<%= link_to("Edit", edit_album_photo_path(@album, @photo)) %> | 
+<%= link_to("Back", album_photos_path(@album)) %>
 <hr>
 <% form_for :comment, :url => photo_comments_path(@photo) , 
 					  :html => { :multipart => true } do |f| %>

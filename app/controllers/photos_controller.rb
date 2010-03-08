@@ -1,13 +1,13 @@
 class PhotosController < ApplicationController
   before_filter :login_required, :only => [:new, :edit, :create, :update, :destroy]
-  before_filter :find_photo, :only =>  [:edit, :update, :destroy]
+  before_filter :find_album
 
   def index
-    @photos = Photo.recent.paginate( :page => params[:page], :per_page => 10)
+    @photos = @album.photos.recent.paginate( :page => params[:page], :per_page => 10)
   end
 
   def show
-    @photo = Photo.find(params[:id])
+    @photo = @album.photos.find(params[:id])
     @comments = @photo.comments
   end
 
@@ -16,13 +16,15 @@ class PhotosController < ApplicationController
   end
 
   def edit
+    @photo = Photo.find(params[:id])
   end
 
   def create
     @photo = current_user.photos.build(params[:photo])
+    @photo.album_id = @album.id
     if @photo.save
       notice_stickie('Photo was successfully created.')
-      redirect_to photo_path(@photo)
+      redirect_to album_photos_path(@album)
     else
       render :action => "new"
     end
@@ -31,7 +33,7 @@ class PhotosController < ApplicationController
   def update
     if @photo.update_attributes(params[:photo])
       notice_stickie('Photo was successfully updated.')
-      redirect_to photo_path(@photo)
+      redirect_to album_photos_path(@album, @photo)
     else
       format.html {render :action => "edit"}
     end
@@ -40,11 +42,11 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     warning_stickie('Photo was successfully remove.')
-    redirect_to photos_path
+    redirect_to album_photos_path(@album)
   end
 
   protected
-  def find_photo
-    @photo = current_user.photos.find(params[:id])    
+  def find_album
+    @album = Album.find(params[:album_id])    
   end  
 end

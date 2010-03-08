@@ -1,5 +1,5 @@
 <h1>Edit Photo</h1>
-<% form_for :photo , :url => photo_path(@photo) ,
+<% form_for :photo , :url => album_photos_path(@album, @photo) ,
  					:html => {:method => :put, :multipart => true} do |f| %>
     <%= f.error_messages %>
 	<%= f.file_field :attachment %>
@@ -9,5 +9,5 @@
 <% end %>
 
  
-<%= link_to("Show", photo_path(@photo)) %> | 
-<%= link_to("Back", photos_path) %>
+<%= link_to("Show", album_photos_path(@album, @photo)) %> | 
+<%= link_to("Back", album_photos_path(@album)) %>

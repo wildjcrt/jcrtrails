@@ -1,6 +1,6 @@
 <h1>New Photo</h1>
 
-<% form_for :photo, :url => photos_path, :html => { :multipart => true } do |f| %>
+<% form_for :photo, :url => album_photos_path(@album), :html => { :multipart => true } do |f| %>
 	<%= f.error_messages %>
 	<label>Upload Your Picture</label><br>
 	<%= f.file_field :attachment %>	
@@ -9,4 +9,4 @@
 	<%= f.submit "Submit" %>
 <% end %>
 
-<%= link_to("Back", photos_path) %>
+<%= link_to("Back", album_photos_path(@album)) %>
