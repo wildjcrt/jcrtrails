@@ -10,7 +10,7 @@
 	<%= render_table(@posts,
 		[
 	    ["ID", lambda { |p| p.id }],
-	    ["相簿名稱", lambda { |p| p.subject }],
+	    ["文章名稱", lambda { |p| p.subject }],
 		["動作", lambda { |p|
 		if current_user
 		  link_to("Show", forum_path(p)) + ' | ' +

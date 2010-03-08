@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100305024843
+# Schema version: 20100308024242
 #
 # Table name: photos
 #
@@ -12,7 +12,7 @@
 #  attachment_updated_at   :datetime
 #  user_id                 :integer(4)
 #  album_id                :integer(4)
-#  album_comments_count    :integer(4)      default(0)
+#  photo_comments_count    :integer(4)      default(0)
 #  created_at              :datetime
 #  updated_at              :datetime
 #

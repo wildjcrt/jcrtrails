@@ -2,9 +2,10 @@
 
 <%= render_list(
 	[
-    "簡介"+'<br>'+@game.intro,
+	"簡介"+'<br>'+@game.intro,
     "設計師"+'<br>'+@game.designer,
-	"出版社"+'<br>'+@game.publisher
+	"出版社"+'<br>'+@game.publisher,
+	"標籤"+'<br>'+@game.tag_list.join(" | ")
 	]
 	) 
 %>

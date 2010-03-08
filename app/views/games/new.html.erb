@@ -6,6 +6,10 @@
 	<div><label>Introduction</label><br><%= f.text_area :intro %></div>
 	<div><label>Designer</label><br><%= f.text_field :designer %></div>
 	<div><label>Publisher</label><br><%= f.text_field :publisher %></div>
+	
+	<p>Tags:
+	<%= f.text_field :tag_list -%></p>
+	
 	<%= f.submit "Submit" %>
 <% end %>
 

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100305024843
+# Schema version: 20100308024242
 #
 # Table name: photos
 #
@@ -12,13 +12,14 @@
 #  attachment_updated_at   :datetime
 #  user_id                 :integer(4)
 #  album_id                :integer(4)
-#  album_comments_count    :integer(4)      default(0)
+#  photo_comments_count    :integer(4)      default(0)
 #  created_at              :datetime
 #  updated_at              :datetime
 #
 
 class Photo < ActiveRecord::Base
   has_attached_file :attachment, :styles => { :medium => "300x300>", :thumb => "100x100>" }  
+  acts_as_taggable
   belongs_to :album, :class_name => "Album", :foreign_key => "album_id"
   belongs_to :user, :class_name => "User", :foreign_key => "user_id"
   has_many :comments, :class_name => "PhotoComment" 

@@ -5,7 +5,11 @@
     <div><%= f.text_area :intro %></div><br>
 	<div><%= f.text_field :designer %></div><br>
 	<div><%= f.text_field :publisher %></div><br>
-    <%= f.submit "Submit" %>
+	
+	<p>Tags:
+	<%= f.text_field :tag_list -%></p>
+    
+	<%= f.submit "Submit" %>
 <% end %>
 
 <%= link_to("Show", game_path(@game)) %> | <%= link_to("Back", games_path) %>

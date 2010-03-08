@@ -1,9 +1,10 @@
 <h1>Game List</h1>
 <h2><%= link_to("New Game", new_game_path) %></h2>
 <%= render_table(@games,
-	[
+	[	
     ["ID", lambda { |p| p.id }],
     ["遊戲名稱", lambda { |p| p.name }],
+	["標籤", lambda { |p| p.tag_list.join(" | ") }],
 	["動作", lambda { |p|
 	  add_to_favorites_status_bar(p) + ' | ' +
 	  link_to("Show", game_path(p)) + ' | ' +

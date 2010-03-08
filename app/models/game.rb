@@ -15,6 +15,7 @@
 #
 
 class Game < ActiveRecord::Base  
+  acts_as_taggable
   has_many  :favorites
   has_many  :users, :through => :favorites
   has_one   :album
