@@ -1,5 +1,5 @@
 class ForumController < ApplicationController
-  before_filter :login_required, :only => [:new, :edit, :create, :update]
+  before_filter :login_required, :only => [:new, :edit, :create, :update, :rss]
                                 #:except => [:index, :show]
   before_filter :find_post, :only =>  [:edit, :update]
                             
@@ -37,6 +37,12 @@ class ForumController < ApplicationController
     else
       format.html {render :action => "edit"}
     end
+  end
+
+  def rss
+    @posts = Post.find(:all, :order => "id DESC", :limit => 10)
+    render :layout => false
+    response.headers["Content-Type"] = "application/xml; charset=utf-8"
   end
   
   protected

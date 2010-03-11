@@ -6,6 +6,8 @@
 	<%= render_page_title %>
 	<%= stylesheet_link_tag("reset.css", "base.css", "font.css", "960.css", "application.css", "stickies.css") %>
 	<meta name="author" content="Jcrt">
+	<%= auto_discovery_link_tag(:rss, {:controller => "forum", :action => "rss"}) %>
+	<%= auto_discovery_link_tag(:atom, {:controller => "forum", :action => "rss"}) %>
 </head>
 
 <%= render_body_tag %>
