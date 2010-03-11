@@ -16,6 +16,8 @@
 		  link_to("Show", forum_path(p)) + ' | ' +
 		  link_to("Edit", edit_forum_path(p)) + ' | ' +
 		  link_to("Delete", forum_path(p), :confirm => "Are you sure?", :method => :delete)
+		else
+		  link_to("Show", forum_path(p))
 		end
 		}]
 		],
