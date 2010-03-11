@@ -38,7 +38,7 @@ namespace :deploy do
 
   desc "Restart mod_rails"
   task :restart, :roles => [:app] do
-    run "touch /tmp/restart.txt"
+    run "touch #{current_path}/tmp/restart.txt"
   end
   
   desc "Re-establish symlinks"
