@@ -1,0 +1,20 @@
+xml.instruct!
+
+xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
+ xml.channel do
+
+   xml.title       "Mini BGG"
+   xml.link        url_for :only_path => false, :controller => 'forum'
+   xml.description "Mini BGG for practice"
+
+   @posts.each do |post|
+     xml.item do
+       xml.title       post.subject
+       xml.link        url_for :only_path => false, :controller => 'forum', :action => 'show', :id => post.id
+       xml.description post.content
+       xml.guid        url_for :only_path => false, :controller => 'forum', :action => 'show', :id => post.id
+     end
+   end
+
+ end
+end
