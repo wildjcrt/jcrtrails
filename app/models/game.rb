@@ -14,6 +14,7 @@
 #  updated_at :datetime
 #
 
+
 class Game < ActiveRecord::Base  
   acts_as_taggable
   has_many  :favorites

@@ -51,14 +51,6 @@ class GamesController < ApplicationController
     redirect_to games_path   
   end
   
-  def add_tags
-    @game.tag_list.add("s")
-  end
-  
-  def remove_tags
-    @game.tag_list.remove("s")
-  end
-  
   def destroy
     @game.destroy
     warning_stickie('Game was successfully remove.')
