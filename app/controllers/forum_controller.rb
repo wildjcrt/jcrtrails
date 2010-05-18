@@ -6,6 +6,11 @@ class ForumController < ApplicationController
   def index
 #    @posts = Post.recent.hot.paginate( :page => params[:page], :per_page => 5)
     @posts = Post.recent.paginate( :page => params[:page], :per_page => 5)
+    respond_to do |format|
+       format.html
+       format.rss {response.headers["Content-Type"] = "application/xml; charset=utf-8"} # index.rss.builder
+       format.atom # index.atom.builder
+    end    
   end
   
   def show
@@ -37,12 +42,6 @@ class ForumController < ApplicationController
     else
       format.html {render :action => "edit"}
     end
-  end
-
-  def rss
-    @posts = Post.find(:all, :order => "id DESC", :limit => 10)
-    render :layout => false
-    response.headers["Content-Type"] = "application/xml; charset=utf-8"
   end
   
   protected

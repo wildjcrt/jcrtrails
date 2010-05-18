@@ -6,16 +6,7 @@
     ["ID", lambda { |p| p.id }],
     ["遊戲名稱", lambda { |p| p.name }],
 	["標籤", lambda { |p| p.tag_list.join(" | ") }],
-	["動作", lambda { |p|
-	  if current_user
-		add_to_favorites_status_bar(p) + ' | ' +
-		link_to("Show", game_path(p)) + ' | ' +
-		link_to("Edit", edit_game_path(p)) + ' | ' +
-		link_to("Delete", game_path(p), :confirm => "Are you sure?", :method => :delete )
-	  else
-		link_to("Show", game_path(p))
-	  end
-	}]
+	["動作", lambda { |p| game_button_in_index(p)}]
 	],
     :class_name => "table") 
 %>

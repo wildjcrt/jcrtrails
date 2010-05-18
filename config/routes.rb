@@ -18,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  map.resources :forums, :collection => {:rss => :get}, :controller => "forum" do |forum|
+  map.resources :forums, :controller => "forum" do |forum|
     forum.resources :comments
   end
   map.namespace :admin do |admin|

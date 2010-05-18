@@ -1,6 +1,9 @@
+include PageViews::Controller
 class PhotosController < ApplicationController
+
   before_filter :login_required, :only => [:new, :edit, :create, :update, :destroy]
   before_filter :find_album
+  before_filter :increment_page_views, :only => [:show]
 
   def index
     @photos = @album.photos.recent.paginate( :page => params[:page], :per_page => 10)
@@ -9,6 +12,11 @@ class PhotosController < ApplicationController
   def show
     @photo = @album.photos.find(params[:id])
     @comments = @photo.comments
+  end
+
+  def increment_page_views
+    @photo = @album.photos.find(params[:id])
+    page_views_increment @photo
   end
 
   def new

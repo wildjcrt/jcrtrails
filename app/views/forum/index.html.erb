@@ -17,11 +17,21 @@
 		  link_to("Edit", edit_forum_path(p)) + ' | ' +
 		  link_to("Delete", forum_path(p), :confirm => "Are you sure?", :method => :delete)
 		else
-		  link_to("Show", forum_path(p))
+		  link_to("Show", forum_path(p), :id => "post-#{p.id}")
 		end
-		}]
+		}],
+		["複製", "<input class='copy_url' type='button' value='點擊複製'></input>"]
 		],
 	    :class_name => "table") 
 	%>
 
 <%= will_paginate(@posts) %>
+
+<% content_for(:javascript_codearea) do %>
+<script type="text/javascript" charset="utf-8">
+		$("input.copy_url").bind( 'click', function() {
+			$("a#post-5").copy();
+			alert("Success!");
+		});
+</script>
+<% end %>

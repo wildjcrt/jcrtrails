@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100308024242
+# Schema version: 20100513093937
 #
 # Table name: photos
 #
@@ -15,9 +15,12 @@
 #  photo_comments_count    :integer(4)      default(0)
 #  created_at              :datetime
 #  updated_at              :datetime
+#  page_views_counter      :integer(4)      default(0)
 #
 
 class Photo < ActiveRecord::Base
+  with_page_views
+
   has_attached_file :attachment, :styles => { :medium => "300x300>", :thumb => "100x100>" }  
   acts_as_taggable
   belongs_to :album, :class_name => "Album", :foreign_key => "album_id"
